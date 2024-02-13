@@ -26,7 +26,7 @@ public class SimpleBankingApp {
 		users.add(aUser);
 		
 		aUser = new User("julia.roberts@gmail.com", "change_me",   "Julia", "roberts",   "07770123456");
-		users.add(aUser); 
+		users.add(aUser);
 		
 	}
 	
@@ -92,9 +92,14 @@ public class SimpleBankingApp {
 	 * @return A double value, being the balance of the account
 	 */
 	public static double getBalance(String account_number) {
-		return 0;
-		// TODO
-		
+		double balance = 0;
+
+		for (Transaction transaction: transactions) {
+			if (transaction.getAccount_number().equals(account_number)) {
+				balance+=transaction.getTransaction_amount();
+			}
+		}
+		return balance;
 	}
 	
 	
