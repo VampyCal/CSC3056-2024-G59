@@ -4,17 +4,17 @@ import static org.junit.Assert.*;
 
 
 import org.jfree.data.DefaultKeyedValues2D;
+import org.jfree.data.DefaultKeyedValues;
 import org.jfree.data.Values2D;
+import org.jfree.data.KeyedValues;
 import org.jfree.data.DataUtilities;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.framework.Assert;
-
 public class DataUtilitiesTest extends DataUtilities {
 	private Values2D values2D;
-
+	private KeyedValues KeyedValues;
 	@Before
 	public void setUp() throws Exception {
 		DefaultKeyedValues2D testValues = new DefaultKeyedValues2D(); 
@@ -31,8 +31,6 @@ public class DataUtilitiesTest extends DataUtilities {
 		testValues.addValue(5, 2, 0);
 		testValues.addValue(6, 2, 1);
 		testValues.addValue(0, 0, 2);
- 
-
 	}
 
 	@After
@@ -198,4 +196,21 @@ public class DataUtilitiesTest extends DataUtilities {
 		createNumberArray2D(array2D);
 		assertNotEquals("Does not produce Number", double[][].class, DataUtilities.createNumberArray2D(array2D)); 
 	} */
+	
+	// 2.1.5 testGetCumulativePercentage() method Test Cases
+	
+	// Tests correct values 
+	@Test
+	public void testGetCumulativePercentage() {
+		KeyedValues testObject = new DefaultKeyedValues(); 
+		DefaultKeyedValues keyvalues = new DefaultKeyedValues(); 
+		keyvalues.addValue((Comparable) 0.0, 6.0); 
+		keyvalues.addValue((Comparable) 1.0, 11.0);
+		keyvalues.addValue((Comparable) 2.0, 3.0);
+		KeyedValues = testObject = DataUtilities.getCumulativePercentages((KeyedValues) keyvalues);
+		assertEquals((double) testObject.getValue(2), 1.0, 0.000000001d);
+		
+	}
+	
+	
 }
