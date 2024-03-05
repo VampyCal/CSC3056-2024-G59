@@ -9,7 +9,8 @@ import org.jfree.data.DataUtilities;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import junit.framework.TestCase;
+
+import junit.framework.Assert;
 
 public class DataUtilitiesTest extends DataUtilities {
 	private Values2D values2D;
@@ -112,8 +113,9 @@ public class DataUtilitiesTest extends DataUtilities {
 	} 
 		}
 	
-	// 2.1.3 createNewArray() method Test Cases
+	// 2.1.3 createNumberArray() method Test Cases
 	
+	// test that valid data can be input into method createNumberArray()
 	@Test
 	public void testCreateValidNumberArray() {
 		double[] array1D = new double[]{-3.22, 5.43};
@@ -123,6 +125,9 @@ public class DataUtilitiesTest extends DataUtilities {
 	catch (Exception e) {
 		assertTrue("Invalid array data", e.getClass().equals(IllegalArgumentException.class));
 	} 
+	
+		}
+	// test that invalid null data cannot be input into method createNumberArray() and generates an exception
 	@Test
 	public void testCreateNullNumberArray() {
 		try { DataUtilities.createNumberArray(null);
@@ -133,13 +138,16 @@ public class DataUtilitiesTest extends DataUtilities {
 	} 
 	
 		}
+	
+	// test the output for createNumberArray() is a Number[] array object
 	@Test
 	public void testValidReturnCreateNumberArray() { 
 		double[] array1D = new double[]{0.0, 1.3};
-		createNumberArray(array1D);
-		assertEquals("Does not produce Number", java.lang.Number[].class, DataUtilities.createNumberArray(array1D)); 
+		Number[] array1D2 = new Number[]{0.0, 1.3};
+		assertArrayEquals("createNumberArray() creates a Number object", array1D2, DataUtilities.createNumberArray(array1D));
 	} 
 	
+	//test the output for createNumberArray is no a double[] array object
 	@Test
 	public void testInvalidDoubleReturnCreateNumberArray() { 
 		double[] array1D = new double[]{0, 3};
@@ -147,4 +155,47 @@ public class DataUtilitiesTest extends DataUtilities {
 		assertNotEquals("Does not produce Number", double[].class, DataUtilities.createNumberArray(array1D)); 
 	} 
 	
+	// 2.1.4 testCreateNumberArray2D method Test Cases
+	
+	/*
+	// test that valid data can be input into method createNumberArray2D()
+	@Test
+	public void testCreateValidNumberArray2D() {
+		double[][] array2D = new double[][]{};
+		try { DataUtilities.createNumberArray2D(array2D);
+	fail ("No exception thrown. Valid array data input."); 
+	}
+	catch (Exception e) {
+		assertTrue("Invalid array data", e.getClass().equals(IllegalArgumentException.class));
+	} 
+	
+		} */
+	
+	// test that invalid null data cannot be input into method createNumberArray2D() and generates an exception
+	@Test
+	public void testCreateNullNumberArray2D() {
+		try { DataUtilities.createNumberArray2D(null);
+	fail ("No exception thrown. The expected outcome was: a thrown exception of type: IllegalArgumentException"); 
+	}
+	catch (Exception e) {
+		assertTrue("Invalid array data", e.getClass().equals(IllegalArgumentException.class));
+	} 
+	
+		}
+	/*
+	// test the output for createNumberArray2D() is a Number[] array object
+	@Test
+	public void testValidReturnCreateNumberArray2D() { 
+		double[][] array2D = new double[][]{};
+		Number[][] array2D2 = new Number[][]{};
+		assertArrayEquals("createNumberArray() creates a Number object", array2D2, DataUtilities.createNumberArray2D(array2D));
+	} 
+	
+	//test the output for createNumberArray is no a double[] array object
+	@Test
+	public void testInvalidDoubleReturnCreateNumberArray2D() { 
+		double[][] array2D = new double[][]{};
+		createNumberArray2D(array2D);
+		assertNotEquals("Does not produce Number", double[][].class, DataUtilities.createNumberArray2D(array2D)); 
+	} */
 }
