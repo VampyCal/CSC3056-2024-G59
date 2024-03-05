@@ -123,6 +123,14 @@ public class DataUtilitiesTest extends DataUtilities {
 	catch (Exception e) {
 		assertTrue("Invalid array data", e.getClass().equals(IllegalArgumentException.class));
 	} 
+	@Test
+	public void testCreateNullNumberArray() {
+		try { DataUtilities.createNumberArray(null);
+	fail ("No exception thrown. The expected outcome was: a thrown exception of type: IllegalArgumentException"); 
+	}
+	catch (Exception e) {
+		assertTrue("Invalid array data", e.getClass().equals(IllegalArgumentException.class));
+	} 
 	
 		}
 	@Test
