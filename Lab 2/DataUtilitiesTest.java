@@ -62,7 +62,7 @@ public class DataUtilitiesTest extends DataUtilities {
 	
 	// TC3 Valid data and invalid column index
 	@Test 
-	public void testInvlaidColumnCalculateColumnTotal() {
+	public void testInvalidColumnCalculateColumnTotal() {
 		try { DataUtilities.calculateColumnTotal(values2D, 3);
 	fail("No exception thrown. The expected outcome was: a thrown exception of type: IllegalArgumentException"); 
 	}
@@ -217,7 +217,7 @@ public class DataUtilitiesTest extends DataUtilities {
 	
 	// TC2 test that the return data form createNumberArray2D() method is a 2D Number Array
 	@Test
-	public void testCreateValidNumberArray2D2() {
+	public void testNumberReturnCreateValidNumberArray2D() {
         double[][] array2D = { {1.0,6.0}, {9.0, 9.0} };
         Number[][] array2D2 = { {1.0,6.0}, {9.0, 9.0} };
         createNumberArray2D(array2D);
@@ -321,7 +321,6 @@ public class DataUtilitiesTest extends DataUtilities {
 		assertTrue("Invalid array data", e.getClass().equals(IllegalArgumentException.class));
 	}	
 	}	
-}
-	
+}	
 	
 }
